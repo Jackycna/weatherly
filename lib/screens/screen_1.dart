@@ -21,7 +21,7 @@ class _Screen1State extends State<Screen1> {
 
   @override
   void initState() {
-    UpdateUi(widget.weatherdata);
+    // UpdateUi(widget.weatherdata);
     super.initState();
   }
 
@@ -73,7 +73,7 @@ class _Screen1State extends State<Screen1> {
                 ],
               ),
               Text(
-                cityName,
+                cityName ?? 'New York',
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _Screen1State extends State<Screen1> {
                 ),
               ),
               Text(
-                tempIncel,
+                tempIncel ?? '13 c',
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -89,10 +89,12 @@ class _Screen1State extends State<Screen1> {
                 ),
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('${emoji}', style: TextStyle(fontSize: 35)),
                   Text(
-                    currentWeather,
+                    currentWeather ?? '🌤️',
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
@@ -130,7 +132,7 @@ class _Screen1State extends State<Screen1> {
   }
 
   void UpdateUi(weatherData) {
-    var weatherid = weatherData['Weather'][0]['id'];
+    var weatherid = weatherData['weather'][0]['id'];
     if (weatherid > 200 && weatherid < 300) {
       setState(() {
         emoji = "⛈️";
